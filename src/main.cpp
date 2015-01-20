@@ -22,15 +22,49 @@ int main (int argc, char * const argv[]) {
     // START: User changeable parameters
     //--------------------------------------------------------------------------
     
+    cout << "There are " << argc << " arguments:" << endl;
+    
+    // Loop through each argument and print its number and value
+    for (int nArg=0; nArg < argc; nArg++)
+    {
+        cout << nArg << " " << argv[nArg] << endl;
+    }
+    
+    // Problem configuration file
+    const char* config_file = argv[1];
+    
+    // Read configuration file
+    FILE * myfile;
+    myfile = fopen(config_file,"r");
+    
+    if (myfile == NULL)
+    {
+        return 1;
+    }
+    
     // Mesh files
-    const char* macro_mesh_file = "Meshes/macro_structured_20by20.msh";
-    const char* micro_mesh_file = "Meshes/microB_unstructured_20by20.msh";
+    char macro_mesh_file[90];
+    fscanf(myfile, "%s", macro_mesh_file);
+    char micro_mesh_file[90];
+    fscanf(myfile, "%s", micro_mesh_file);
+    
+    // Solution output file
+    char solution_file[90];
+    fscanf(myfile, "%s", solution_file);
     
     // Simulation end time (hours)
-    double tend = 50.0;        
+    long double tend;
+    fscanf(myfile, "%Lf", &tend);
+         
+            
+       
+    
+    
+    //const char* macro_mesh_file = argv[1]; //"macro_structured_20by20.msh";
+    //const char* micro_mesh_file = "microB_unstructured_20by20.msh";      
     
     // Stores solution at time values specified in tspan array
-    string solution_file = "Results/solution.txt";
+    //string solution_file = "solution.txt";
     int no_solns = (int) tend;
     double* tspan = new double [no_solns+1];
     tspan[0] = no_solns; // Store number as first element
@@ -40,10 +74,11 @@ int main (int argc, char * const argv[]) {
     }    
     
     // Solver statistics
-    string statistics_file = "Results/statistics.txt";
+    string statistics_file = "statistics.txt";
     
     // Uniform initial condition [m]
-    double h0 = -20.0;
+    long double h0;
+    fscanf(myfile, "%Lf", &h0);
     
     // Print Solver information (true or false)
     bool PrintStepInfo = true;
@@ -60,22 +95,37 @@ int main (int argc, char * const argv[]) {
     soil_struct soilA;
     soil_struct soilB;
     
-    soilA.Ksat   = 0.044 / 3600.0; // hydraulic conductivity
-    soilA.thetar = 0.058; // residual moisture content
-    soilA.thetas = 0.41; // saturated moisture content
-    soilA.alpha  = 7.3; // alpha paramter (van Genuchten relations)
-    soilA.n      = 1.89; // n parameters (van Genuchten relations)
-    soilA.m      = 1.0 - 1.0 / soilA.n; // m = 1 - 1/n (van Genuchten relations)
+    long double a;
+    fscanf(myfile, "%Lf", &a); // hydraulic conductivity  
+    soilA.Ksat   = a; //0.044 / 3600.0;  
+    fscanf(myfile, "%Lf", &a);
+    soilA.thetar = a; // residual moisture content
+    fscanf(myfile, "%Lf", &a);
+    soilA.thetas = a; // saturated moisture content
+    fscanf(myfile, "%Lf", &a);
+    soilA.alpha = a; // alpha paramter (van Genuchten relations)
+    fscanf(myfile, "%Lf", &a);
+    soilA.n = a; // n parameter (van Genuchten relations)
+
+    soilA.m = 1.0 - 1.0 / soilA.n; // m = 1 - 1/n (van Genuchten relations)
     
-    soilB.Ksat   = 0.044 / 3600.0 * 1.0e-3; // hydraulic conductivity
-    soilB.thetar = 0.058; // residual moisture content
-    soilB.thetas = 0.41; // saturated moisture content
-    soilB.alpha  = 7.3; // alpha paramter (van Genuchten relations)
-    soilB.n      = 1.89; // n parameters (van Genuchten relations)
-    soilB.m      = 1.0 - 1.0 / soilB.n; // m = 1 - 1/n (van Genuchten relations)
+    fscanf(myfile, "%Lf", &a); // hydraulic conductivity
+    soilB.Ksat   = a; //0.044 / 3600.0;  
+    fscanf(myfile, "%Lf", &a);
+    soilB.thetar = a; // residual moisture content
+    fscanf(myfile, "%Lf", &a);
+    soilB.thetas = a; // saturated moisture content
+    fscanf(myfile, "%Lf", &a);
+    soilB.alpha = a; // alpha paramter (van Genuchten relations)
+    fscanf(myfile, "%Lf", &a);
+    soilB.n = a; // n parameter (van Genuchten relations)
+    
+    fclose(myfile);
+
+    soilB.m = 1.0 - 1.0 / soilB.n; // m = 1 - 1/n (van Genuchten relations)
     
     // Effective conductivity file
-    const char* Keff_file = "Keff/Keff.txt";
+    const char* Keff_file = "Keff.txt";
     
     // Macro boundary conditions
     int *macro_bc = new int [5];

@@ -25,12 +25,6 @@ if [ $? -eq 0 ]; then
 
 echo Code compiled successfully.
 
-# Number of OpenMP threads
-export OMP_NUM_THREADS=1
-
-# parallel = 0 (Serial), parallel = 1 (OpenMP)
-export parallel=1
-
 else
 
 echo Code failed to compile.
