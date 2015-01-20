@@ -1,0 +1,15 @@
+macro_structured_10by10.msh
+microB_unstructured_10by10.msh
+solution.txt
+2.0
+-20.0
+1.222222e-5
+0.058
+0.41
+7.3
+1.89
+1.222222e-8
+0.058
+0.41
+7.3
+1.89
