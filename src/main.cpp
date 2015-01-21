@@ -22,18 +22,19 @@ int main (int argc, char * const argv[]) {
     // START: User changeable parameters
     //--------------------------------------------------------------------------
     
-    cout << "There are " << argc << " arguments:" << endl;
-    
-    // Loop through each argument and print its number and value
-    for (int nArg=0; nArg < argc; nArg++)
-    {
-        cout << nArg << " " << argv[nArg] << endl;
-    }
+//     cout << "There are " << argc << " arguments:" << endl;
+//     
+//     // Loop through each argument and print its number and value
+//     for (int nArg=0; nArg < argc; nArg++)
+//     {
+//         cout << nArg << " " << argv[nArg] << endl;
+//     }
     
     // Problem configuration file
     const char* config_file = argv[1];
     
     // Read configuration file
+    cout << "Reading configuration file\n";
     FILE * myfile;
     myfile = fopen(config_file,"r");
     
@@ -44,20 +45,31 @@ int main (int argc, char * const argv[]) {
     
     // Mesh files
     char macro_mesh_file[90];
-    fscanf(myfile, "%s", macro_mesh_file);
+    fscanf(myfile, "%s", macro_mesh_file);    
     char micro_mesh_file[90];
     fscanf(myfile, "%s", micro_mesh_file);
+    
+    cout << "Macroscopic mesh: " << macro_mesh_file << "\n";
+    cout << "Microscopic mesh: " << micro_mesh_file << "\n";
     
     // Solution output file
     char solution_file[90];
     fscanf(myfile, "%s", solution_file);
     
+    // Uniform initial condition [m]
+    long double h0;
+    fscanf(myfile, "%Lf", &h0);
+    
     // Simulation end time (hours)
     long double tend;
     fscanf(myfile, "%Lf", &tend);
-         
+    
+    // Number of solutions to store
+    int no_solns;
+    fscanf(myfile, "%i", &no_solns);         
             
-       
+
+           
     
     
     //const char* macro_mesh_file = argv[1]; //"macro_structured_20by20.msh";
@@ -65,20 +77,27 @@ int main (int argc, char * const argv[]) {
     
     // Stores solution at time values specified in tspan array
     //string solution_file = "solution.txt";
-    int no_solns = (int) tend;
+    //int no_solns = (int) tend;
+    //double* tspan = new double [no_solns+1];
+//     tspan[0] = no_solns; // Store number as first element
+//     for (i=1; i<no_solns+1; i++)
+//     {
+//         tspan[i] = (double)i*3600.0;
+//     }    
+    
     double* tspan = new double [no_solns+1];
     tspan[0] = no_solns; // Store number as first element
+    long double a;
     for (i=1; i<no_solns+1; i++)
     {
-        tspan[i] = (double)i*3600.0;
-    }    
+        fscanf(myfile, "%Lf", &a);
+        tspan[i] = a*3600.0;
+    }
     
     // Solver statistics
     string statistics_file = "statistics.txt";
     
-    // Uniform initial condition [m]
-    long double h0;
-    fscanf(myfile, "%Lf", &h0);
+
     
     // Print Solver information (true or false)
     bool PrintStepInfo = true;
@@ -95,7 +114,6 @@ int main (int argc, char * const argv[]) {
     soil_struct soilA;
     soil_struct soilB;
     
-    long double a;
     fscanf(myfile, "%Lf", &a); // hydraulic conductivity  
     soilA.Ksat   = a; //0.044 / 3600.0;  
     fscanf(myfile, "%Lf", &a);

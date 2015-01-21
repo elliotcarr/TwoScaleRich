@@ -120,17 +120,20 @@ void save_solution(string solution_file, double* tspan, double* tspan_solns,
     {
         if (j == 0)
         {
-            temp_file << 0.0 << "\n";
+            temp_file << 0.0;
         }
         else
         {
-            temp_file << tspan[j] << "\n";
+            temp_file << tspan[j];
         }
         
         for (k=0; k<N; k++)
         {
-            temp_file << tspan_solns[j*N + k] << "\n";
+            temp_file << " ";
+            temp_file << tspan_solns[j*N + k];
         }
+        
+        temp_file << "\n";
         
     }
     temp_file.close();
