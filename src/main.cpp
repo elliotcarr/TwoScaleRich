@@ -135,11 +135,15 @@ int main (int argc, char * const argv[]) {
     fscanf(myfile, "%Lf", &a);
     soilB.alpha = a; // alpha paramter (van Genuchten relations)
     fscanf(myfile, "%Lf", &a);
-    soilB.n = a; // n parameter (van Genuchten relations)
+    soilB.n = a; // n parameter (van Genuchten relations)    
     
-    fclose(myfile);
-
     soilB.m = 1.0 - 1.0 / soilB.n; // m = 1 - 1/n (van Genuchten relations)
+    
+    // Boundary flux
+    fscanf(myfile, "%Lf", &a);        
+    double boundary_flux = a;
+    cout << boundary_flux << "\n";
+    fclose(myfile);
     
     // Effective conductivity file
     const char* Keff_file = "Keff.txt";
@@ -173,8 +177,6 @@ int main (int argc, char * const argv[]) {
     // 3: dh/dx = 0 (Free drainage condition for East and West boundaries)
     // 4: dh/dy = 0 (Free drainage condition for North and South boundaries)
     
-    // Boundary flux [m/s]
-    double boundary_flux  = -0.01 / 3600.0;
     macro_bc[0] = 1; // Influx
     macro_bc[1] = 3; // South
     macro_bc[2] = 2; // East
@@ -215,7 +217,6 @@ int main (int argc, char * const argv[]) {
     //--------------------------------------------------------------------------
     
     string mesh_type      = "structured_";
-    string d = "_10by10.txt";
     
     //--------------------------------------------------------------------------
     // Read effective conductivity values 
@@ -332,8 +333,8 @@ int main (int argc, char * const argv[]) {
         {
             cout << "NSTEPS: " << setw(5) << exprem_stats.NumSteps << " | ";
             cout << scientific;
-            cout << std::setprecision(4) << "TIME [H]: " << t << " | ";
-            cout << "STEPSIZE [S]: " << exprem_stats.CurrentStep << " | ";
+            cout << std::setprecision(4) << "TIME: " << t << " | ";
+            cout << "STEPSIZE: " << exprem_stats.CurrentStep << " | ";
             cout << "KRYDIM: " << exprem_stats.CurrentKryDim << "\n";
         }
         

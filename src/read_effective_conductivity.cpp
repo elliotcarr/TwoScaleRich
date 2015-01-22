@@ -41,18 +41,13 @@ int read_effective_conductivity(const char* Keff_file, \
     fscanf(myfile, "%Lf", &a);
     logh_first = a;
     
-    logh_values = new double [no_hvalues];
+    logh_values = new double [no_hvalues];    
+    Keff_values = new double [4*no_hvalues];
     
     for (i=0; i<no_hvalues; i++)
     {
         fscanf(myfile, "%Lf", &a);
         logh_values[i] = a;
-    }
-    
-    Keff_values = new double [4*no_hvalues];
-    
-    for (i=0; i<no_hvalues; i++)
-    {
         fscanf(myfile, "%Lf", &a);
         Keff_values[i] = a;
         fscanf(myfile, "%Lf", &a);
