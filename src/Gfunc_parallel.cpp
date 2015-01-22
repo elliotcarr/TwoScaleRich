@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------
 // Gfunc_parallel.cpp
 //
-// Written by Dr Elliot Carr (2013-2014)
+// Written by Elliot Carr
 // Queensland University of Technology
 //
 // This code is part of TwoScalRich.
