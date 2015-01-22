@@ -1,8 +1,8 @@
 //------------------------------------------------------------------------------
 // main.cpp
 //
-// Written by Dr Elliot Carr (2013-2014)
-// École Centrale Paris and Queensland University of Technology
+// Written by Elliot Carr
+// Queensland University of Technology
 //
 // This code is part of TwoScalRich.
 //
