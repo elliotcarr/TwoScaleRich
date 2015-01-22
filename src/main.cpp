@@ -90,7 +90,7 @@ int main (int argc, char * const argv[]) {
     for (i=1; i<no_solns+1; i++)
     {
         fscanf(myfile, "%Lf", &a);
-        tspan[i] = a*3600.0;
+        tspan[i] = a;
     }
     
     // Solver statistics
@@ -308,7 +308,7 @@ int main (int argc, char * const argv[]) {
     //--------------------------------------------------------------------------
     // Time stepping         
     double t = 0.0;
-    tend = tend * 3600.0; // Hours to seconds
+    //tend = tend * 3600.0; // Hours to seconds
     while (t < tend)
     {
         // exprem takes one internal step and then exits
@@ -323,7 +323,7 @@ int main (int argc, char * const argv[]) {
         stats_file << setw(5) << exprem_stats.NumSteps << " ";
         stats_file << scientific;
         stats_file << std::setprecision(4);
-        stats_file << t/3600.0 << " ";
+        stats_file << t << " ";
         stats_file << exprem_stats.CurrentStep << " ";
         stats_file << exprem_stats.CurrentKryDim << "\n";
         
@@ -332,7 +332,7 @@ int main (int argc, char * const argv[]) {
         {
             cout << "NSTEPS: " << setw(5) << exprem_stats.NumSteps << " | ";
             cout << scientific;
-            cout << std::setprecision(4) << "TIME [H]: " << t/3600.0 << " | ";
+            cout << std::setprecision(4) << "TIME [H]: " << t << " | ";
             cout << "STEPSIZE [S]: " << exprem_stats.CurrentStep << " | ";
             cout << "KRYDIM: " << exprem_stats.CurrentKryDim << "\n";
         }
