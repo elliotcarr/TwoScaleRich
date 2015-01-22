@@ -1,10 +1,9 @@
 // -----------------------------------------------------------------------------
 // exprem.cpp
 //
-// Written by Elliot Carr
-// Queensland University of Technology
+// Elliot Carr, Queensland University of Technology
 // 
-// This code is part of TwoScalRich.
+// This code is part of TwoScaleRich.
 //
 // This file is a C++ implementation of the EEM time-stepping solver, see, e.g.
 // - E. J. Carr, T. J. Moroney and I. W. Turner (2011), Applied Mathematics and 

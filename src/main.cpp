@@ -1,10 +1,9 @@
 //------------------------------------------------------------------------------
 // main.cpp
 //
-// Written by Elliot Carr
-// Queensland University of Technology
-//
-// This code is part of TwoScalRich.
+// Elliot Carr, Queensland University of Technology
+// 
+// This code is part of TwoScaleRich.
 //
 // This is the main program file.
 //

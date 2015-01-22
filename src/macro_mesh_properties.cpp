@@ -1,10 +1,9 @@
 //------------------------------------------------------------------------------
 // macro_mesh_properties.cpp
 //
-// Written by Elliot Carr
-// Queensland University of Technology
-//
-// This code is part of TwoScalRich.
+// Elliot Carr, Queensland University of Technology
+// 
+// This code is part of TwoScaleRich.
 //
 // This file reads in the macro mesh and generates properties such as CV_areas,
 // edge lengths, etc.

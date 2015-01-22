@@ -1,10 +1,9 @@
 //------------------------------------------------------------------------------
 // Gfunc_serial.cpp
 //
-// Written by Elliot Carr
-// Queensland University of Technology
-//
-// This code is part of TwoScalRich.
+// Elliot Carr, Queensland University of Technology
+// 
+// This code is part of TwoScaleRich.
 //
 // This file computes all the spatial approximation (computation and assembly 
 // of fluxes, etc.). It computes the vector given by the right-hand side of the 

@@ -1,10 +1,9 @@
 //------------------------------------------------------------------------------
 // micro_mesh_properties.cpp
 //
-// Written by Dr Elliot Carr (2013-2014)
-// Ecole Centrale Paris and Queensland University of Technology
-//
-// This code is part of TwoScalRich.
+// Elliot Carr, Queensland University of Technology
+// 
+// This code is part of TwoScaleRich.
 //
 // This file reads in the micro mesh and generates properties such as CV_areas,
 // edge lengths, etc.

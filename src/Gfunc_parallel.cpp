@@ -1,10 +1,9 @@
 //------------------------------------------------------------------------------
 // Gfunc_parallel.cpp
 //
-// Written by Elliot Carr
-// Queensland University of Technology
-//
-// This code is part of TwoScalRich.
+// Elliot Carr, Queensland University of Technology
+// 
+// This code is part of TwoScaleRich.
 //
 // This file is a parallel (OpenMP) version of Gfunc_serial.cpp
 //

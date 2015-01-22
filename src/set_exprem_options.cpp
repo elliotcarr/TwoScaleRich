@@ -1,10 +1,9 @@
 // -----------------------------------------------------------------------------
 // set_exprem_options.cpp
 //
-// Written by Dr Elliot Carr (2013-2014)
-// Ecole Centrale Paris and Queensland University of Technology
+// Elliot Carr, Queensland University of Technology
 // 
-// This code is part of TwoScalRich.
+// This code is part of TwoScaleRich.
 //
 // This file sets the options for the time stepping solver "exprem.cpp"
 //

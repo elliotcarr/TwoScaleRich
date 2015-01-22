@@ -1,10 +1,9 @@
 //------------------------------------------------------------------------------
 // read_effective_conductivity.cpp
 //
-// Written by Dr Elliot Carr (2013-2014)
-// Ecole Centrale Paris and Queensland University of Technology
-//
-// This code is part of TwoScalRich.
+// Elliot Carr, Queensland University of Technology
+// 
+// This code is part of TwoScaleRich.
 //
 // This file reads the effective conductivity values computed in 
 // Effective Conductivity/effective_conductivity.m

@@ -1,10 +1,9 @@
 // -----------------------------------------------------------------------------
 // phipade.cpp
 //
-// Written by Dr Elliot Carr (2013-2014)
-// Ecole Centrale Paris and Queensland University of Technology
-//
-// This code is part of TwoScalRich.
+// Elliot Carr, Queensland University of Technology
+// 
+// This code is part of TwoScaleRich.
 //
 // This file computes computes the (6,6) Pade approximation for the 'phi' 
 // function required in the EEM time-stepping solver exprem.cpp.
