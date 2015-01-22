@@ -162,7 +162,7 @@ int phipade(double* phiH, double* H, double alpha, int m, int MaxKrylov)
         if (info != 0)
         {
             cout << "Error: Solution unsuccessful in Pade approximation at "
-                    << "Line 159." << "\n";
+                    << "Line 160." << "\n";
             exit(EXIT_FAILURE);
         }               
         
