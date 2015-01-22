@@ -10,4 +10,4 @@ cp bin/run tests/Richards_Equation
 echo Exectuable copied from bin to current directory
 cd tests/Richards_Equation
 
-./run problem_options.txt
+./run problem_options2.txt
